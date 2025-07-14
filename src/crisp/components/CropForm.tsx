@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Loader2, Sprout, Target, AlertTriangle } from 'lucide-react';
+import { fetchCropsAndTraits } from '../services/api';
 
 interface CropFormProps {
   onSubmit: (crop: string, trait: string) => void;
@@ -24,25 +25,20 @@ interface AvailableCropsAndTraits {
 export const CropForm: React.FC<CropFormProps> = ({ onSubmit, isLoading, apiStatus }) => {
   const [crop, setCrop] = useState('');
   const [trait, setTrait] = useState('');
-  const [availableCropsAndTraits, setAvailableCropsAndTraits] = useState<AvailableCropsAndTraits>({});
+  const [availableCropsAndTraits, setAvailableCropsAndTraits] = useState<any>({});
 
   useEffect(() => {
-    const fetchCropsAndTraits = async () => {
+    const getCropsAndTraits = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/crops_and_traits');
-        if (response.ok) {
-          const data = await response.json();
-          setAvailableCropsAndTraits(data);
-        } else {
-          console.error('Failed to fetch crops and traits:', response.statusText);
-        }
+        const data = await fetchCropsAndTraits();
+        setAvailableCropsAndTraits(data);
       } catch (error) {
         console.error('Error fetching crops and traits:', error);
       }
     };
 
     if (apiStatus === 'online') {
-      fetchCropsAndTraits();
+      getCropsAndTraits();
     }
   }, [apiStatus]);
 

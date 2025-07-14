@@ -34,6 +34,10 @@ export default function HomePage() {
               <h3 className="text-xl font-semibold text-red-700 mb-2">Crisp</h3>
               <p className="text-gray-600">Analyze crop gene information.</p>
             </Link>
+            <Link href="/agrotwin" className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+              <h3 className="text-xl font-semibold text-emerald-700 mb-2">AgroTwin</h3>
+              <p className="text-gray-600">Digital Twin Agriculture with real-time monitoring.</p>
+            </Link>
           </div>
         </div>
       </div>

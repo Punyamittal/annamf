@@ -27,7 +27,7 @@ const API_BASE_URL = 'http://localhost:5000/api';
 
 export const analyzeGene = async (crop: string, trait: string): Promise<ApiResponse> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/analyze`, {
+    const response = await fetch(`${API_BASE_URL}/generate-report`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,5 +59,17 @@ export const checkApiHealth = async (): Promise<boolean> => {
     return response.ok;
   } catch {
     return false;
+  }
+};
+
+export const fetchCropsAndTraits = async (): Promise<any> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/crops_and_traits`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch crops and traits');
+    }
+    return await response.json();
+  } catch (error) {
+    throw new Error('Failed to fetch crops and traits');
   }
 };

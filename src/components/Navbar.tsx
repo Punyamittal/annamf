@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
     { name: 'Crop Simulation', href: '/cropsimulation' },
     { name: 'Cattle Farm Management', href: '/cattlefarmmanagement' },
     { name: 'Green Guardian', href: '/greenguardian/dashboard' },
+    { name: 'AgroTwin', href: '/agrotwin/dashboard' },
     { name: 'Demand Analysis', href: '/demandanalysis' },
     { name: 'Plant Disease Prediction', href: '/plantdiseaseprediction' },
     { name: 'Crisp', href: '/crisp' },
